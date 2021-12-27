@@ -31,6 +31,7 @@ function lesKanaps(index) {
         <img src="${article.imageUrl}"alt="${article.altTxt}">
         <h3 class="productName">${article.name}</h3>
         <p class="productDescription">${article.description}</p>
+        <p  class="">${article.price} EUROS</p>
     </article>
    </a>`;
  }
