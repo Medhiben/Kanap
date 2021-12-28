@@ -9,7 +9,6 @@
 /*création  et ajout de zone d'article insertion de l'adresse produite via le chemin produit + paramètres(son id):
     la page index est htpp://127.0.0.1:5500/front/html/index.html donc la page du produit sera htpp://127.0.0.1:5500/front/html/product.html
     pour rajouter son paramètre on met ?, puis la clé (ici_id),associé(=) à sa valeur dynamique $(article._id) */
-    console.log("salut");
 fetch ("http://localhost:3000/api/products")
 .then((res) => res.json())
 .then((objetProduits) => {
@@ -21,17 +20,17 @@ document.querySelector(".titles").innerHTML = "<h1>erreur 404</h1>";
 console.log("erreur 404, sur ressource API:" + err);
 })
 
-function lesKanaps(index) {
+function lesKanaps(articles) {
     
     let zoneArticle = document.querySelector("#items");
-    for (let article of index) {
-    
+    for (let article of articles) {
     zoneArticle.innerHTML += `<a href="./product.html?_id=${article._id}">
     <article>
         <img src="${article.imageUrl}"alt="${article.altTxt}">
         <h3 class="productName">${article.name}</h3>
         <p class="productDescription">${article.description}</p>
-        <p  class="">${article.price} EUROS</p>
+        <button href="product.html" id="${article._id}">VOIR</button>
+        <p>${article.price} EUROS</p>
     </article>
    </a>`;
  }
