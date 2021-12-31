@@ -106,10 +106,10 @@ function getCart(){
 getTotals();
 
 // Suppression d'un produit
-function deleteProduct() {
+function productDelete() {
     let buttonDelete = document.querySelectorAll("deleteItem");
-    
-    for (let a = 0; a < buttonDelete.length; a++) {
+    let buttonDeleteLength = buttonDelete.length
+    for (let a = 0; a < buttonDeleteLength; a++) {
         buttonDelete[a].addEventListener("click", (e) => {
             e.preventDefault();
 
@@ -125,4 +125,4 @@ function deleteProduct() {
         })
     }
 }
-deleteProduct();
+productDelete();
