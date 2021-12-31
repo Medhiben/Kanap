@@ -95,11 +95,26 @@ function getCart(){
     let priceTotal = 0;
 
     for (let i = 0; i < elementsQuantityLenght; ++i) {
-        priceTotal += (elementsQuantity[i].valueAsNumber * produit[i].price);
+        priceTotal += (elementsQuantity[i].valueAsNumber * productInLocalStorage[i].price);
     }
 
     let productTotalPrice = document.getElementById("totalPrice");
     productTotalPrice.innerHTML = priceTotal;
     console.log(priceTotal);
+
+}
+getTotals();
+
+// Suppression d'un produit
+function deleteProduct() {
+    let buttonDelete = document.querySelectorAll("deleteItem");
+    let idDelete = productInLocalStorage[a]._id;
+    let colorDelete = productInLocalStorage[a].colors;
+
+    for (let a = 0; a < btn_supprimer.length; a++) {
+        buttonDelete[a].addEventListener("click", (e) => {
+            e.preventDefault();
+        })
+    }
 
 }
