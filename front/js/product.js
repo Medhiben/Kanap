@@ -78,13 +78,13 @@ function addToCart(produit){
                     parseInt(optionsProduit.quantiteProduit) + parseInt(findResult.quantiteProduit);
                     findResult.quantiteProduit = newQuantite;
                     localStorage.setItem("products", JSON.stringify(productInLocalStorage));
-                    console.table(productInLocalStorage);
+                    console.log(productInLocalStorage);
                     popup();
 
                 } else {
                     productInLocalStorage.push(optionsProduit);
                     localStorage.setItem("products", JSON.stringify(productInLocalStorage));
-                    console.table(productInLocalStorage);
+                    console.log(productInLocalStorage);
                     popup();
                 }
         
@@ -92,7 +92,7 @@ function addToCart(produit){
                 productInLocalStorage =[];
                 productInLocalStorage.push(optionsProduit);
                 localStorage.setItem("products", JSON.stringify(productInLocalStorage));
-                console.table(productInLocalStorage);
+                console.log(productInLocalStorage);
                 popup();
             }}
             });
