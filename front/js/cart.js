@@ -3,7 +3,7 @@ console.log(productInLocalStorage);
 const emptyCartPosition = document.querySelector("#cart_item");
 
 // Si le panier est vide
-function cartGet(){
+function getCart(){
     if (productInLocalStorage === null || productInLocalStorage == 0) {
         const emptyCart = `<p>Votre panier est vide</p>`;
         emptyCartPosition.innerHTML = emptyCart;
@@ -19,9 +19,9 @@ function cartGet(){
             productDivImg.className = "cart__item__img";
 
             let productImg = document.createElement("img");
-            productImg.appendChild(productDivImg);
-            productImg.src = produit.imgProduit;
-            productImg.alt = produit.altImgProduit;
+            productDivImg.appendChild(productImg);
+            productImg.src = produit.imageUrl;
+            productImg.alt = produit.altTxt;
 
             let productItemContent = document.createElement("div");
             productArticle.appendChild(productItemContent);
@@ -33,15 +33,15 @@ function cartGet(){
 
             let productTitle = document.createElement("h2");
             productItemContentDescription.appendChild(productTitle);
-            productTitle.innerHTML = produit.nomProduit;
+            productTitle.innerHTML = produit.name;
 
             let productGreen = document.createElement("p");
             productTitle.appendChild(productGreen);
-            productGreen.innerHTML = produit.couleurProduit;
+            productGreen.innerHTML = produit.colors;
 
             let productPrice = document.createElement("p");
             productTitle.appendChild(productPrice);
-            productPrice.innerHTML = produit.prixProduit;
+            productPrice.innerHTML = produit.price;
 
             let productItemSettings = document.createElement("div");
             productArticle.appendChild(productItemSettings);
@@ -53,12 +53,12 @@ function cartGet(){
 
             let productQte = document.createElement("p");
             productItemSettingsQuantity.appendChild(productQte);
-            productQte.innerHTML = produit.quantiteProduit;
+            productQte.innerHTML = produit.quantityPicked;
 
             let productInsertionQuantity = document.createElement("input");
             productItemSettingsQuantity.appendChild(productInsertionQuantity);
             productInsertionQuantity.className = "itemQuantity";
-            productInsertionQuantity.value = produit.quantiteProduit;
+            productInsertionQuantity.value = produit.quantityPicked;
             productInsertionQuantity.setAttribute("type", "number");
             productInsertionQuantity.setAttribute("name", "itemQuantity");
             productInsertionQuantity.setAttribute("min", "1");
@@ -68,32 +68,11 @@ function cartGet(){
             productArticle.appendChild(productItemContentSettingsDelete);
             productItemContentSettingsDelete.className = "cart__item__content__settings__delete";
 
-            let productItemDelete =document.appendChild("p");
+            let productItemDelete =document.createElement("p");
             productItemContentSettingsDelete.appendChild(productItemDelete);
             productItemDelete.className = "deleteItem";
-            product.innerHTML = produit.optionsProduit;
-
-
-
-
-            
-            
-            
-
-
-            
-
-
-
-
-
-
-
-
-
-
-
-
-        }
+            productItemDelete.innerHTML = "Supprimer";
+      }
+     }
     }
-    }
+    getCart();
