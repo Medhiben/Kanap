@@ -76,3 +76,30 @@ function getCart(){
      }
     }
     getCart();
+
+    function getTotals() {
+    // Récupération du total des quantités
+    let elementsQuantity = document.getElementsByClassName("itemQuantity");
+    let elementsQuantityLenght = elementsQuantity.length;
+    let quantityTotal = 0;
+
+    for (let i = 0; i < elementsQuantityLenght; ++i) {
+        quantityTotal += elementsQuantity[i].valueAsNumber;
+    }
+
+    let productTotalQuantity = document.getElementById("totalQuantity");
+    productTotalQuantity.innerHTML = quantityTotal;
+    console.log(quantityTotal);
+
+    // Récupération du prix total
+    let priceTotal = 0;
+
+    for (let i = 0; i < elementsQuantityLenght; ++i) {
+        priceTotal += (elementsQuantity[i].valueAsNumber * produit[i].price);
+    }
+
+    let productTotalPrice = document.getElementById("totalPrice");
+    productTotalPrice.innerHTML = priceTotal;
+    console.log(priceTotal);
+
+}
