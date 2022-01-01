@@ -49,8 +49,8 @@ function addToCart(produit){
 
         let optionsProduit = {
             idProduit: produit._id,
-            couleurProduit: choixCouleur,
-            quantiteProduit: Number(choixQuantite),
+            couleurProduit: produit.colors,
+            quantiteProduit: produit.quantityPicked,
             name: produit.name,
             price: produit.price,
             description: produit.description,
@@ -95,7 +95,7 @@ function addToCart(produit){
             }}
         }
             button_sendToCart.addEventListener("click", function(e){
-                addToCart();
+                addToCart(product);
             });
         
 

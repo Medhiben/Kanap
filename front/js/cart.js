@@ -12,7 +12,7 @@ function getCart(){
             let productArticle = document.createElement("article");
             document.querySelector("#cart__items").appendChild(productArticle);
             productArticle.className = "cart__item";
-            productArticle.setAttribute('data-id', produit.idProduit);
+            productArticle.setAttribute('data-id', produit._id);
 
             let productDivImg = document.createElement("div");
             productArticle.appendChild(productDivImg);
@@ -94,8 +94,8 @@ function getCart(){
     // Récupération du prix total
     let priceTotal = 0;
 
-    for (let b = 0; b < elementsQuantityLenght; ++b) {
-        priceTotal += (elementsQuantity[b].valueAsNumber * productInLocalStorage[b].price);
+    for (let a = 0; a < elementsQuantityLenght; ++a) {
+        priceTotal += (elementsQuantity[a].valueAsNumber * productInLocalStorage[a].price);
     }
 
     let productTotalPrice = document.getElementById("totalPrice");
