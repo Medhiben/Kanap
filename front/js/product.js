@@ -2,7 +2,6 @@ const params = new URLSearchParams(document.location.search);
 const id = params.get("_id");
 const colorPicked = document. querySelector("#colors");
 const quantityPicked = document.querySelector("#quantity");
-const button_sendToCart = document.querySelector("#addToCart");
 let product = null;
 
 
@@ -41,9 +40,8 @@ console.log("affichage effectué");
 
 
 function addToCart(produit){
-    const btn_envoyerPanier = document.querySelector("#addToCart");
+    const button_sendToCart = document.querySelector("#addToCart");
 
-    button_sendToCart.addEventListener("click", function(e){
         if (quantityPicked.value > 0 && quantityPicked.value <=100 && quantityPicked.value != 0){
 
         let choixQuantite = quantityPicked.value;
@@ -95,7 +93,10 @@ function addToCart(produit){
                 console.log(productInLocalStorage);
                 popup();
             }}
-            });
         }
+            button_sendToCart.addEventListener("click", function(e){
+                addToCart();
+            });
+        
 
 

@@ -94,8 +94,8 @@ function getCart(){
     // Récupération du prix total
     let priceTotal = 0;
 
-    for (let i = 0; i < elementsQuantityLenght; ++i) {
-        priceTotal += (elementsQuantity[i].valueAsNumber * productInLocalStorage[i].price);
+    for (let b = 0; b < elementsQuantityLenght; ++b) {
+        priceTotal += (elementsQuantity[b].valueAsNumber * productInLocalStorage[b].price);
     }
 
     let productTotalPrice = document.getElementById("totalPrice");
@@ -107,7 +107,7 @@ getTotals();
 
 // Suppression d'un produit
 function productDelete() {
-    let buttonDelete = document.querySelectorAll("deleteItem");
+    let buttonDelete = document.querySelectorAll(".deleteItem");
     let buttonDeleteLength = buttonDelete.length
     for (let a = 0; a < buttonDeleteLength; a++) {
         buttonDelete[a].addEventListener("click", (e) => {
