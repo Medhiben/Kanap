@@ -94,8 +94,8 @@ function getCart(){
     // Récupération du prix total
     let priceTotal = 0;
 
-    for (let a = 0; a < elementsQuantityLenght; ++a) {
-        priceTotal += (elementsQuantity[a].valueAsNumber * productInLocalStorage[a].price);
+    for (let i = 0; i < elementsQuantityLenght; ++i) {
+        priceTotal += (elementsQuantity[i].valueAsNumber * productInLocalStorage[i].price);
     }
 
     let productTotalPrice = document.getElementById("totalPrice");
