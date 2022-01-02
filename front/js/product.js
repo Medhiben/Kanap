@@ -3,6 +3,8 @@ const id = params.get("_id");
 const colorPicked = document. querySelector("#colors");
 const quantityPicked = document.querySelector("#quantity");
 let product = null;
+const button_sendToCart = document.querySelector("#addToCart");
+
 
 
 
@@ -40,7 +42,6 @@ console.log("affichage effectué");
 
 
 function addToCart(produit){
-    const button_sendToCart = document.querySelector("#addToCart");
 
         if (quantityPicked.value > 0 && quantityPicked.value <=100 && quantityPicked.value != 0){
 
@@ -49,8 +50,8 @@ function addToCart(produit){
 
         let optionsProduit = {
             idProduit: produit._id,
-            couleurProduit: produit.colors,
-            quantiteProduit: produit.quantityPicked,
+            couleurProduit: choixCouleur,
+            quantiteProduit: Number(choixQuantite),
             name: produit.name,
             price: produit.price,
             description: produit.description,
