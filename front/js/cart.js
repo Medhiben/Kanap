@@ -145,7 +145,7 @@ function modifyMyQuantity() {
     const resultFindModif = productInLocalStorage.find((el) => el.quantityModifValue !== quantityModif);
         
             resultFindModif.quantiteProduit = quantiteModifValue;
-            productInLocalStorage[c].quantiteProduit = resultFind.quantiteProduit;
+            productInLocalStorage[c].quantiteProduit = resultFindModif.quantiteProduit;
 
             localStorage.setItem("products", JSON.stringify(productInLocalStorage));
 
