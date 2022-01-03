@@ -132,18 +132,29 @@ productDelete();
 
 //Fonction Modification de la quantité
 
-function modifyMyQuantity () {
+function modifyMyQuantity() {
     let modifyQte = document.querySelectorAll(".itemQuantity");
 
-    for (let c = 0; a < modifyQte.length; k++) {
+    for (let c = 0; c < modifyQte.length; c++) {
         modifyQte[c].addEventListener("change", (e) => {
         e.preventDefault();
 
     let quantityModif = productInLocalStorage[c].quantiteProduit;
     let quantiteModifValue = modifyQte[c].valueAsNumber;
 
-    const resultFindModif = productInLocalStorage[c].find((element) => element.quantiteModifValue !== quantityModif)
-        })
+    const resultFindModif = productInLocalStorage.find((el) => el.quantityModifValue !== quantityModif);
+        
+            resultFindModif.quantiteProduit = quantiteModifValue;
+            productInLocalStorage[c].quantiteProduit = resultFind.quantiteProduit;
+
+            localStorage.setItem("products", JSON.stringify(productInLocalStorage));
+
+            location.reload();
+
+})
     }
 }
+modifyMyQuantity();
+
+
  
