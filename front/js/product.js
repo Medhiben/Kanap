@@ -46,7 +46,7 @@ function addToCart(produit){
         if (quantityPicked.value > 0 && quantityPicked.value <=100 && quantityPicked.value != 0){
 
         let choixQuantite = quantityPicked.value;
-        let choixCouleur = colorPicked.value;
+        let choixCouleur = colors.value;
 
         let optionsProduit = {
             idProduit: produit._id,

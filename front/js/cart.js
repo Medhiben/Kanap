@@ -37,7 +37,7 @@ function getCart(){
 
             let productGreen = document.createElement("p");
             productTitle.appendChild(productGreen);
-            productGreen.innerHTML = produit.colors;
+            productGreen.innerHTML = produit.couleurProduit;
 
             let productPrice = document.createElement("p");
             productTitle.appendChild(productPrice);
@@ -53,7 +53,8 @@ function getCart(){
 
             let productQte = document.createElement("p");
             productItemSettingsQuantity.appendChild(productQte);
-            productQte.innerHTML = produit.quantityPicked;
+            console.log(produit)
+            productQte.innerHTML = produit.quantiteProduit; 
 
             let productInsertionQuantity = document.createElement("input");
             productItemSettingsQuantity.appendChild(productInsertionQuantity);
@@ -79,11 +80,10 @@ function getCart(){
 
     function getTotals() {
     // Récupération du total des quantités
-    let elementsQuantity = document.getElementsByClassName("itemQuantity");
-    let elementsQuantityLenght = elementsQuantity.length;
+    let elementsQuantity = document.getElementsByClassName(".itemQuantity");
     let quantityTotal = 0;
 
-    for (let i = 0; i < elementsQuantityLenght; ++i) {
+    for (let i = 0; i < elementsQuantity.length; ++i) {
         quantityTotal += elementsQuantity[i].valueAsNumber;
     }
 
@@ -94,11 +94,11 @@ function getCart(){
     // Récupération du prix total
     let priceTotal = 0;
 
-    for (let i = 0; i < elementsQuantityLenght; ++i) {
+    for (let i = 0; i < elementsQuantity.length; ++i) {
         priceTotal += (elementsQuantity[i].valueAsNumber * productInLocalStorage[i].price);
     }
 
-    let productTotalPrice = document.getElementById("totalPrice");
+    let productTotalPrice = document.getElementById("#totalPrice");
     productTotalPrice.innerHTML = priceTotal;
     console.log(priceTotal);
 
@@ -108,21 +108,22 @@ getTotals();
 // Suppression d'un produit
 function productDelete() {
     let buttonDelete = document.querySelectorAll(".deleteItem");
-    let buttonDeleteLength = buttonDelete.length
-    for (let a = 0; a < buttonDeleteLength; a++) {
-        buttonDelete[a].addEventListener("click", (e) => {
-            e.preventDefault();
-
-            let idDelete = productInLocalStorage[a]._id;
-            let colorDelete = productInLocalStorage[a].colors;
+    
+    for (let a = 0; a < buttonDelete.length; a++) {
+        
+            let idDelete = productInLocalStorage[a].idProduit;
+            let colorDelete = productInLocalStorage[a].couleurProduit;
 
 
-            productInLocalStorage = productInLocalStorage.filter( element => element._id !== idDelete || element.colors !== colorDelete );
+            productInLocalStorage = productInLocalStorage.filter( element => element.idProduit !== idDelete || element.couleurProduit !== colorDelete );
             localStorage.setItem("products", JSON.stringify(productInLocalStorage));
 
             alert("Ce produit a bien été supprimé du panier");
             location.reload();
-        })
+        
     }
 }
-productDelete();
+buttonDelete[a].addEventListener("click", (e) => {
+    e.preventDefault();
+productDelete(produit);
+}) 
