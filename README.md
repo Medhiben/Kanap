@@ -1,7 +1,6 @@
-# Projet 5 : Construisez un site e-commerce en JavaScript
+# Projet 5 : Construisez un site e-commerce en JavaScript// Kanap #
 
-# Kanap #
-
+<img src="/front/images/logo.png" alt="My logo"/>
 
 
 # Architecture générale
