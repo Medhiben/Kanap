@@ -3,6 +3,7 @@
 # Kanap #
 
 
+
 # Architecture générale
 
 L’application web sera composée de 4 pages :
@@ -39,7 +40,7 @@ Voici le modèle à partir duquel écrire ce plan : Modèle de plan de test.
 
 # Informations complémentaires
 
-- La page d’accueil
+# La page d’accueil
 
 Cette page présente l’ensemble des produits retournés par l’API.
 
@@ -49,14 +50,14 @@ sa description.
 En cliquant sur le produit, l’utilisateur sera redirigé sur la page du produit pour consulter
 celui-ci plus en détail.
 
-- La page Produit
+# La page Produit
 
 Cette page présente un seul produit ; elle aura un menu déroulant permettant à l'utilisateur
 de choisir une option de personnalisation, ainsi qu’un input pour saisir la quantité. 
 
 Ces éléments doivent être pris en compte dans le panier
 
-- La page Panier
+# La page Panier
 Sur cette page, l’utilisateur va pouvoir modifier la quantité d’un produit de son panier ; à ce
 moment, le total du panier devra bien se mettre à jour.
 
@@ -72,13 +73,13 @@ prénom contenant des chiffres, ou une adresse e-mail ne contenant pas de symbol
 En cas de problème de saisie, un message d’erreur devra être affiché en dessous du champ
 correspondant.
 
-- La page Confirmation
+# La page Confirmation
 
 Sur cette page, l'utilisateur doit voir s’afficher son numéro de commande. 
 
 Il faudra veiller à ce que ce numéro ne soit stocké nulle part.
 
-- Le code source
+# Le code source
 
 Celui-ci devra être indenté et utiliser des commentaires en début de chaque fonction pour
 décrire son rôle. 
@@ -93,7 +94,7 @@ Il ne faudrait pas avoir de longues fonctions qui viendraient répondre à plusi
 Exemple : il ne serait pas accepté de mettre une seule et unique fonction en place pour collecter, traiter
 et envoyer des données.
 
-- API
+# API
 Concernant l’API, des promesses devront être utilisées pour éviter les callbacks. 
 
 Il est possible d’utiliser des solutions alternatives, comme fetch, celle-ci englobant la promesse.
@@ -102,7 +103,7 @@ L’API n’est actuellement que dans sa première version.
 
 La requête post qu’il faudra formuler pour passer une commande ne prend pas encore en considération la quantité ni la couleur des produits achetés.
 
-- Fonctionnement du panier
+# Fonctionnement du panier
 
 Dans le panier, les produits doivent toujours apparaître de manière regroupée par modèle et
 par couleur.
@@ -114,7 +115,7 @@ Si un produit est ajouté dans le panier à plusieurs reprises, mais avec des co
 différentes, il doit apparaître en deux lignes distinctes avec la couleur et la quantité
 correspondantes indiquées à chaque fois.
 
-- Types de données
+# Types de données
 
 Tous les produits possèdent les attributs suivants :
 
