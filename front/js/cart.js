@@ -51,15 +51,15 @@ function getCart(){
             productItemSettings.appendChild(productItemSettingsQuantity);
             productItemSettingsQuantity.className = "cart__item__content__settings__quantity";
 
-            let productQte = document.createElement("p");
+           /* let productQte = document.createElement("p");
             productItemSettingsQuantity.appendChild(productQte);
             console.log(produit)
-            productQte.innerHTML = produit.quantiteProduit; 
+            productQte.innerHTML = produit.quantiteProduit; */
 
             let productInsertionQuantity = document.createElement("input");
             productItemSettingsQuantity.appendChild(productInsertionQuantity);
             productInsertionQuantity.className = "itemQuantity";
-            productInsertionQuantity.value = produit.quantityPicked;
+            productInsertionQuantity.value = produit.quantiteProduit;
             productInsertionQuantity.setAttribute("type", "number");
             productInsertionQuantity.setAttribute("name", "itemQuantity");
             productInsertionQuantity.setAttribute("min", "1");
@@ -80,7 +80,8 @@ function getCart(){
 
     function getTotals() {
     // Récupération du total des quantités
-    let elementsQuantity = document.getElementsByClassName(".itemQuantity");
+    let elementsQuantity = document.getElementsByClassName("itemQuantity");
+    console.log(elementsQuantity);
     let quantityTotal = 0;
 
     for (let i = 0; i < elementsQuantity.length; ++i) {
@@ -96,6 +97,7 @@ function getCart(){
 
     for (let i = 0; i < elementsQuantity.length; ++i) {
         priceTotal += (elementsQuantity[i].valueAsNumber * productInLocalStorage[i].price);
+        console.log(productInLocalStorage);
     }
 
     let productTotalPrice = document.getElementById("totalPrice");
@@ -127,4 +129,21 @@ function productDelete() {
 }
 
 productDelete();
+
+//Fonction Modification de la quantité
+
+function modifyMyQuantity () {
+    let modifyQte = document.querySelectorAll(".itemQuantity");
+
+    for (let c = 0; a < modifyQte.length; k++) {
+        modifyQte[c].addEventListener("change", (e) => {
+        e.preventDefault();
+
+    let quantityModif = productInLocalStorage[c].quantiteProduit;
+    let quantiteModifValue = modifyQte[c].valueAsNumber;
+
+    const resultFindModif = productInLocalStorage[c].find((element) => element.quantiteModifValue !== quantityModif)
+        })
+    }
+}
  
