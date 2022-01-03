@@ -1,24 +1,34 @@
+# Projet 5 : Construisez un site e-commerce en JavaScript
+
 # Kanap #
 
+
 # Architecture générale
+
 L’application web sera composée de 4 pages :
 
 ● Une page d’accueil montrant (de manière dynamique) tous les articles disponibles à
 la vente.
 
 ● Une page “produit” qui affiche (de manière dynamique) les détails du produit sur
-lequel l'utilisateur a cliqué depuis la page d’accueil. Depuis cette page, l’utilisateur
-peut sélectionner une quantité, une couleur, et ajouter le produit à son panier.
+lequel l'utilisateur a cliqué depuis la page d’accueil. 
+
+Depuis cette page, l’utilisateur peut sélectionner une quantité, une couleur, et ajouter le produit à son panier.
 
 ● Une page “panier”. Celle-ci contient plusieurs parties :
+
 - Un résumé des produits dans le panier, le prix total et la possibilité de
 modifier la quantité d’un produit sélectionné ou bien de supprimer celui-ci.
 
-- Un formulaire permettant de passer une commande. Les données du
-formulaire doivent être correctes et bien formatées avant d'être renvoyées au
-back-end. Par exemple, pas de chiffre dans un champ prénom.
+- Un formulaire permettant de passer une commande. 
+
+Les données du formulaire doivent être correctes et bien formatées avant d'être renvoyées au
+back-end. 
+
+Par exemple, pas de chiffre dans un champ prénom.
 
 ● Une page “confirmation” :
+
 - Un message de confirmation de commande, remerciant l'utilisateur pour sa
 commande, et indiquant l'identifiant de commande envoyé par l’API.
 # Planification de tests
@@ -28,6 +38,7 @@ dans ce document (spécifications fonctionnelles et techniques Kanap).
 Voici le modèle à partir duquel écrire ce plan : Modèle de plan de test.
 
 # Informations complémentaires
+
 - La page d’accueil
 
 Cette page présente l’ensemble des produits retournés par l’API.
@@ -37,6 +48,7 @@ sa description.
 
 En cliquant sur le produit, l’utilisateur sera redirigé sur la page du produit pour consulter
 celui-ci plus en détail.
+
 - La page Produit
 
 Cette page présente un seul produit ; elle aura un menu déroulant permettant à l'utilisateur
@@ -80,6 +92,7 @@ Il ne faudrait pas avoir de longues fonctions qui viendraient répondre à plusi
 
 Exemple : il ne serait pas accepté de mettre une seule et unique fonction en place pour collecter, traiter
 et envoyer des données.
+
 - API
 Concernant l’API, des promesses devront être utilisées pour éviter les callbacks. 
 
@@ -121,11 +134,11 @@ description    string
 
 altTxt         string
 
-- Technologies utilisées
+# Technologies utilisées
 
 HTML, CSS, JavaScript.
 
-- URL des API
+# URL des API
 
 ● Catalogue de canapés : http://localhost:3000/api/products
 
