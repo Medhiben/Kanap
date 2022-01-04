@@ -244,3 +244,4 @@ function formGet() {
     };
  }
  formGet();
+ console.log(formGet);
