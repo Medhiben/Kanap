@@ -245,3 +245,13 @@ function formGet() {
  }
  formGet();
  console.log(formGet);
+
+ // fonction pour l'Envoi des informations client au localstorage
+ function postForm() {
+    const buttonCommander = document.getElementById("order");
+    
+
+
+ }
+
+
