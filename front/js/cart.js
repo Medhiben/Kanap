@@ -155,34 +155,36 @@ modifyMyQuantity();
 //Instauration du formulaire avec des regex
 function formGet() {
     // Ajout des Regex pour le formulaire
-    let formGeneral = document.querySelector(".cart__order__form");
+    let form = document.querySelector(".cart__order__form");
 
     //Création des expressions regex 
     let emailRegExp = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$');
     let letterRegExp = new RegExp("^[a-zA-Z ,.'-]+$");
+    let adressRegExp = new RegExp("^[0-9]{1,3}(?:(?:[,. ]){1}[-a-zA-Zàâäéèêëïîôöùûüç]+)+");
+
 
     // Ecoute de la modification du prénom
-    formGeneral.firstName.addEventListener('change', function() {
+    form.firstName.addEventListener('change', function() {
         validFirstName(this);
     });
 
     // Ecoute de la modification du nom
-    formGeneral.lastName.addEventListener('change', function() {
+    form.lastName.addEventListener('change', function() {
         validLastName(this);
     });
 
     // Ecoute de la modification de l'adresse
-    formGeneral.address.addEventListener('change', function() {
+    form.address.addEventListener('change', function() {
         validAddress(this);
     });
 
     // Ecoute de la modification de la ville
-    formGeneral.city.addEventListener('change', function() {
+    form.city.addEventListener('change', function() {
         validCity(this);
     });
 
     // Ecoute de la modification de l'email
-    formGeneral.email.addEventListener('change', function() {
+    form.email.addEventListener('change', function() {
         validEmail(this);
     });
 
