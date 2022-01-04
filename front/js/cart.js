@@ -8,7 +8,7 @@ function getCart(){
         const emptyCart = `<p>Votre panier est vide</p>`;
         emptyCartPosition.innerHTML = emptyCart;
     } else {
-        for (let produit of productInLocalStorage){
+        productInLocalStorage.forEach((produit,i) => {
             let productArticle = document.createElement("article");
             document.querySelector("#cart__items").appendChild(productArticle);
             productArticle.className = "cart__item";
@@ -61,7 +61,7 @@ function getCart(){
             productInsertionQuantity.className = "itemQuantity";
             productInsertionQuantity.value = produit.quantiteProduit;
             productInsertionQuantity.setAttribute("type", "number");
-            productInsertionQuantity.setAttribute("name", "itemQuantity");
+            productInsertionQuantity.setAttribute("name", "itemQuantity-"+ produit.idProduit);
             productInsertionQuantity.setAttribute("min", "1");
             productInsertionQuantity.setAttribute("max", "100");
 
@@ -73,7 +73,7 @@ function getCart(){
             productItemContentSettingsDelete.appendChild(productItemDelete);
             productItemDelete.className = "deleteItem";
             productItemDelete.innerHTML = "Supprimer";
-      }
+      })
      }
     }
     getCart();
@@ -138,23 +138,16 @@ function modifyMyQuantity() {
     for (let c = 0; c < modifyQte.length; c++) {
         modifyQte[c].addEventListener("change", (e) => {
         e.preventDefault();
+        if(modifyQte[c].name === "itemQuantity-" + productInLocalStorage[c].idProduit) {
 
-    let quantityModif = productInLocalStorage[c].quantiteProduit;
-    let quantiteModifValue = modifyQte[c].valueAsNumber;
-
-    const resultFindModif = productInLocalStorage.find((el) => el.quantityModifValue !== quantityModif);
-        
-            resultFindModif.quantiteProduit = quantiteModifValue;
-            productInLocalStorage[c].quantiteProduit = resultFindModif.quantiteProduit;
-
+            let quantiteModifValue = modifyQte[c].valueAsNumber;
+            
+            productInLocalStorage[c].quantiteProduit
+            productInLocalStorage[c].quantiteProduit = quantiteModifValue;
             localStorage.setItem("products", JSON.stringify(productInLocalStorage));
-
             location.reload();
-
+        }
 })
     }
 }
 modifyMyQuantity();
-
-
- 
