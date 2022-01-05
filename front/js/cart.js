@@ -269,7 +269,7 @@ function formGet() {
  
 
  const order = {
-    contacthh : {
+    contact : {
         firstName: inputFirstName.value,
         lastName: inputLastName.value,
         address: inputAdress.value,
@@ -300,6 +300,7 @@ fetch("http://localhost:3000/api/products/order", options)
 
         .catch((err) => {
             alert ("Problème avec fetch : " + err.message);
+
         });
     })
 }
