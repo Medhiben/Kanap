@@ -290,14 +290,20 @@ fetch("http://localhost:3000/api/products/order", options)
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
-            localStorage.clear();
-            localStorage.setItem("orderId", data.orderId);
-            document.location.href = "confirmation.html";
+            //localStorage.clear();
+            //document.location.href = "confirmation.html";
+            if(data.orderId) {
+                console.log(data);
+                localStorage.clear();
+                JSON.stringify(localStorage.setItem("orderId", data.orderId));
+                document.location.href = "confirmation.html";
+            } else {
+                document.location.href = "confirmation.html";
+            }
         })
-
-        
         .catch((err) => {
-            alert ("Problème avec fetch : " + err.message);
+        
+            alert ("Problème serveur : " + err.message);
             });
     })
 }
