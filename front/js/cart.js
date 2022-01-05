@@ -250,8 +250,62 @@ function formGet() {
  function postForm() {
     const buttonCommander = document.getElementById("order");
 
+    buttonCommander.addEventListener("click", (event)=>{
+
+    // Récupération des coordonnées du formulaire du client 
+    let inputFirstName = document.getElementById('firstName');
+    let inputLastName = document.getElementById('lastName');
+    let inputAdress = document.getElementById('address');
+    let inputCity = document.getElementById('city');
+    let inputEmail = document.getElementById('email');
+
+    // Création d'un array depiuis le Local Storage
+    let id_Product = [];
+    for (let i = 0; i<productInLocalStorage.length;i++) {
+        id_Product.push(productInLocalStorage[i].idProduit);
+    }
+    console.log(id_Product);
+
+ 
+
+ const order = {
+    contacthh : {
+        firstName: inputFirstName.value,
+        lastName: inputLastName.value,
+        address: inputAdress.value,
+        city: inputCity.value,
+        email: inputEmail.value,
+    },
+    products: id_Product,
+} 
+
+const options = {
+    method: 'POST',
+    body: JSON.stringify(order),
+    headers: {
+        'Accept': 'application/json', 
+        "Content-Type": "application/json" 
+    },
+};
+
+fetch("http://localhost:3000/api/products/order", options)
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            localStorage.clear();
+            localStorage.setItem("orderId", data.orderId);
+
+            document.location.href = "confirmation.html";
+        })
+
+        .catch((err) => {
+            alert ("Problème avec fetch : " + err.message);
+        });
+    })
+}
+        postForm();
+    
 
 
- }
 
 
