@@ -41,7 +41,7 @@ function getCart(){
 
             let productPrice = document.createElement("p");
             productTitle.appendChild(productPrice);
-            productPrice.innerHTML = produit.price;
+            productPrice.innerHTML = produit.price  + " €";
 
             let productItemSettings = document.createElement("div");
             productArticle.appendChild(productItemSettings);
@@ -249,7 +249,7 @@ function formGet() {
  // fonction pour l'Envoi des informations client au localstorage
  function postForm() {
     const buttonCommander = document.getElementById("order");
-    
+
 
 
  }
