@@ -266,8 +266,6 @@ function formGet() {
     }
     console.log(id_Product);
 
- 
-
  const order = {
     contact : {
         firstName: inputFirstName.value,
@@ -294,17 +292,18 @@ fetch("http://localhost:3000/api/products/order", options)
             console.log(data);
             localStorage.clear();
             localStorage.setItem("orderId", data.orderId);
-
             document.location.href = "confirmation.html";
         })
 
+        
         .catch((err) => {
             alert ("Problème avec fetch : " + err.message);
-
-        });
+            });
     })
 }
         postForm();
+
+
     
 
 
