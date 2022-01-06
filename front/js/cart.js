@@ -160,7 +160,7 @@ function formGet() {
     //Création des expressions regex 
     let emailRegExp = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$');
     let letterRegExp = new RegExp("^[a-zA-Z ,.'-]+$");
-    let adressRegExp = new RegExp("^[0-9]{1,3}(?:(?:[,. ]){1}[-a-zA-Zàâäéèêëïîôöùûüç]+)+");
+    let addressRegExp = new RegExp("^[0-9]{1,3}(?:(?:[,. ]){1}[-a-zA-Zàâäéèêëïîôöùûüç]+)+");
 
 
     // Ecoute de la modification du prénom
@@ -211,13 +211,13 @@ function formGet() {
     };
 
     //validation de l'adresse
-    const validAddress = function(inputAdress) {
-        let adressErrorMsg = inputAdress.nextElementSibling;
+    const validAddress = function(inputAddress) {
+        let addressErrorMsg = inputAddress.nextElementSibling;
 
-        if (adressRegExp.test(inputAdress.value)) {
-            adressErrorMsg.innerHTML = '';
+        if (addressRegExp.test(inputAddress.value)) {
+            addressErrorMsg.innerHTML = '';
         } else {
-            adressErrorMsg.innerHTML = 'Veuillez renseigner ce champ.';
+            addressErrorMsg.innerHTML = 'Veuillez renseigner ce champ.';
         }
     };
 
@@ -248,16 +248,19 @@ function formGet() {
 
  // fonction pour l'Envoi des informations client au localstorage
  function postForm() {
-    const buttonCommander = document.getElementById("order");
+
+    let buttonCommander = document.getElementById("order");
 
     buttonCommander.addEventListener("click", (event)=>{
-
     // Récupération des coordonnées du formulaire du client 
     let inputFirstName = document.getElementById('firstName');
     let inputLastName = document.getElementById('lastName');
-    let inputAdress = document.getElementById('address');
+    let inputAddress = document.getElementById('address');
     let inputCity = document.getElementById('city');
     let inputEmail = document.getElementById('email');
+
+    //if(productInLocalStorage.quantiteProduit !== 0 && emailRegExp.test(inputEmail.value) && letterRegExp.test(inputFirstName.value) && letterRegExp.test(inputLastName.value) && adressRegExp.test(inputAddress.value) && letterRegExp.test(inputCity.value)){
+    //buttonCommander.getElementById("order").removeAttribute("disabled");
 
     // Création d'un array depiuis le Local Storage
     let id_Product = [];
@@ -270,7 +273,7 @@ function formGet() {
     contact : {
         firstName: inputFirstName.value,
         lastName: inputLastName.value,
-        address: inputAdress.value,
+        address: inputAddress.value,
         city: inputCity.value,
         email: inputEmail.value,
     },
@@ -305,7 +308,10 @@ fetch("http://localhost:3000/api/products/order", options)
         
             alert ("Problème serveur : " + err.message);
             });
-    })
+     //}
+     })
+
+
 }
         postForm();
 

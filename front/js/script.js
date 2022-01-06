@@ -13,14 +13,14 @@ fetch ("http://localhost:3000/api/products")
 .then((res) => res.json())
 .then((objetProduits) => {
 console.log(objetProduits);
-lesKanaps(objetProduits);
+theKanaps(objetProduits);
 })
 .catch((error) => {
 document.querySelector(".titles").innerHTML = "<h1>erreur 404</h1>";
 console.log("erreur 404, sur ressource API:" + err);
 })
 
-function lesKanaps(articles) {
+function theKanaps(articles) {
     
     let zoneArticle = document.querySelector("#items");
     for (let article of articles) {
