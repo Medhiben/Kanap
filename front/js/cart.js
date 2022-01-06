@@ -1,6 +1,11 @@
 let productInLocalStorage = JSON.parse(localStorage.getItem('products'));
 console.log(productInLocalStorage);
 const emptyCartPosition = document.querySelector("#cart_item");
+//Création des expressions regex 
+let emailRegExp = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$');
+let letterRegExp = new RegExp("^[a-zA-Z ,.'-]+$");
+let addressRegExp = new RegExp("^[0-9]{1,3}(?:(?:[,. ]){1}[-a-zA-Zàâäéèêëïîôöùûüç]+)+");
+
 
 // Si le panier est vide
 function getCart(){
@@ -157,12 +162,6 @@ function formGet() {
     // Ajout des Regex pour le formulaire
     let form = document.querySelector(".cart__order__form");
 
-    //Création des expressions regex 
-    let emailRegExp = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$');
-    let letterRegExp = new RegExp("^[a-zA-Z ,.'-]+$");
-    let addressRegExp = new RegExp("^[0-9]{1,3}(?:(?:[,. ]){1}[-a-zA-Zàâäéèêëïîôöùûüç]+)+");
-
-
     // Ecoute de la modification du prénom
     form.firstName.addEventListener('change', function() {
         validFirstName(this);
@@ -259,8 +258,8 @@ function formGet() {
     let inputCity = document.getElementById('city');
     let inputEmail = document.getElementById('email');
 
-    //if(productInLocalStorage.quantiteProduit !== 0 && emailRegExp.test(inputEmail.value) && letterRegExp.test(inputFirstName.value) && letterRegExp.test(inputLastName.value) && adressRegExp.test(inputAddress.value) && letterRegExp.test(inputCity.value)){
-    //buttonCommander.getElementById("order").removeAttribute("disabled");
+    if(productInLocalStorage.length !== 0 && emailRegExp.test(inputEmail.value) && letterRegExp.test(inputFirstName.value) && letterRegExp.test(inputLastName.value) && addressRegExp.test(inputAddress.value) && letterRegExp.test(inputCity.value)){
+   // buttonCommander.removeAttribute("disabled");
 
     // Création d'un array depiuis le Local Storage
     let id_Product = [];
@@ -308,7 +307,7 @@ fetch("http://localhost:3000/api/products/order", options)
         
             alert ("Problème serveur : " + err.message);
             });
-     //}
+     }
      })
 
 
