@@ -6,61 +6,87 @@ let emailRegExp = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2
 let letterRegExp = new RegExp("^[a-zA-Z ,.'-]+$");
 let addressRegExp = new RegExp("^[0-9]{1,3}(?:(?:[,. ]){1}[-a-zA-Zàâäéèêëïîôöùûüç]+)+");
 
-
-// Si le panier est vide et si le panier est remplie
+/* Si des produits sont présents dans le
+panier, les afficher sur la page du
+panier avec une ligne par produit qui
+reprend les informations du produit
+ainsi que la quantité et le prix.
+Affichage du prix total. Si aucun
+produit dans le panier, affichage d’un
+message indiquant que le panier est vide */
 function getCart(){
+    // Si le panier est vide 
     if (productInLocalStorage === null || productInLocalStorage == 0) {
         const emptyCart = `<p>Votre panier est vide</p>`;
         emptyCartPosition.innerHTML = emptyCart;
+        // Si le panier est remplie
     } else {
         productInLocalStorage.forEach((produit,i) => {
+
+            // Insertion de l'élément "article"
             let productArticle = document.createElement("article");
             document.querySelector("#cart__items").appendChild(productArticle);
             productArticle.className = "cart__item";
             productArticle.setAttribute('data-id', produit._id);
 
+            
+            // Insertion de l'élément "div"
             let productDivImg = document.createElement("div");
             productArticle.appendChild(productDivImg);
             productDivImg.className = "cart__item__img";
 
+            
+            // Insertion de l'image
             let productImg = document.createElement("img");
             productDivImg.appendChild(productImg);
             productImg.src = produit.imageUrl;
             productImg.alt = produit.altTxt;
 
+            // Insertion de l'élément "div"            
             let productItemContent = document.createElement("div");
             productArticle.appendChild(productItemContent);
             productItemContent.className = "cart__item__content";
-
+            
+            // Insertion de l'élément "div"
             let productItemContentDescription = document.createElement("div");
             productItemContent.appendChild(productItemContentDescription);
             productItemContentDescription.className = "cart__item__content__description";
-
+            
+            // Insertion de l'élément "h2"
             let productTitle = document.createElement("h2");
             productItemContentDescription.appendChild(productTitle);
             productTitle.innerHTML = produit.name;
-
+            
+            
+            // Insertion de la couleur
             let productGreen = document.createElement("p");
             productTitle.appendChild(productGreen);
             productGreen.innerHTML = produit.couleurProduit;
-
+            
+            // Insertion de l'élément "p"
             let productPrice = document.createElement("p");
             productTitle.appendChild(productPrice);
             productPrice.innerHTML = produit.price  + " €";
-
+            
+            // Insertion de l'élément "div"
             let productItemSettings = document.createElement("div");
             productArticle.appendChild(productItemSettings);
             productItemSettings.className = "cart__item__content__settings";
-
+            
+            // Insertion de l'élément "div"
             let productItemSettingsQuantity = document.createElement("div");
             productItemSettings.appendChild(productItemSettingsQuantity);
             productItemSettingsQuantity.className = "cart__item__content__settings__quantity";
-
+           
+            
+           // Insertion de "Qté : "
            /* let productQte = document.createElement("p");
             productItemSettingsQuantity.appendChild(productQte);
             console.log(produit)
             productQte.innerHTML = produit.quantiteProduit; */
 
+
+            // Insertion de la quantité
             let productInsertionQuantity = document.createElement("input");
             productItemSettingsQuantity.appendChild(productInsertionQuantity);
             productInsertionQuantity.className = "itemQuantity";
@@ -70,10 +96,14 @@ function getCart(){
             productInsertionQuantity.setAttribute("min", "1");
             productInsertionQuantity.setAttribute("max", "100");
 
+            
+            // Insertion de l'élément "div"
             let productItemContentSettingsDelete = document.createElement("div");
             productArticle.appendChild(productItemContentSettingsDelete);
             productItemContentSettingsDelete.className = "cart__item__content__settings__delete";
 
+            
+            // Insertion de "p" supprimer
             let productItemDelete =document.createElement("p");
             productItemContentSettingsDelete.appendChild(productItemDelete);
             productItemDelete.className = "deleteItem";
@@ -119,7 +149,8 @@ function productDelete() {
     for (let a = 0; a < buttonDelete.length; a++) {
         buttonDelete[a].addEventListener("click", (e) => {
             e.preventDefault();
-        
+            
+            //Selection de l'element à modifier en fonction de son id ET sa couleur
             let idDelete = productInLocalStorage[a].idProduit;
             let colorDelete = productInLocalStorage[a].couleurProduit;
 
@@ -138,6 +169,7 @@ productDelete();
 //Fonction Modification de la quantité
 
 function modifyMyQuantity() {
+    //Selection de l'element à modifier en fonction de son id ET sa couleur
     let modifyQte = document.querySelectorAll(".itemQuantity");
 
     for (let c = 0; c < modifyQte.length; c++) {
@@ -261,7 +293,7 @@ function formGet() {
     if(productInLocalStorage.length !== 0 && emailRegExp.test(inputEmail.value) && letterRegExp.test(inputFirstName.value) && letterRegExp.test(inputLastName.value) && addressRegExp.test(inputAddress.value) && letterRegExp.test(inputCity.value)){
    // buttonCommander.removeAttribute("disabled");
 
-    // Création d'un array depiuis le Local Storage
+    // création d'un array depiuis le Local Storage
     let id_Product = [];
     for (let i = 0; i<productInLocalStorage.length;i++) {
         id_Product.push(productInLocalStorage[i].idProduit);
@@ -292,8 +324,6 @@ fetch("http://localhost:3000/api/products/order", options)
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
-            //localStorage.clear();
-            //document.location.href = "confirmation.html";
             if(data.orderId) {
                 console.log(data);
                 localStorage.clear();
