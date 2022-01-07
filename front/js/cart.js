@@ -7,7 +7,7 @@ let letterRegExp = new RegExp("^[a-zA-Z ,.'-]+$");
 let addressRegExp = new RegExp("^[0-9]{1,3}(?:(?:[,. ]){1}[-a-zA-Zàâäéèêëïîôöùûüç]+)+");
 
 
-// Si le panier est vide
+// Si le panier est vide et si le panier est remplie
 function getCart(){
     if (productInLocalStorage === null || productInLocalStorage == 0) {
         const emptyCart = `<p>Votre panier est vide</p>`;
