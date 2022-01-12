@@ -38,11 +38,12 @@
         </a>
         <nav>
           <ul>
-            <li><a href="./index.html"></a>Accueil</li>
+            <a href="./html/index.html"></a>
+            <li></a>Accueil</li>
 
-
-            <li> <a href="./cart.html"></a>Panier</li> 
-
+            <a href="./html/cart.html">
+              <li>Panier</li>
+            </a>
           </ul>
         </nav>
       </div>
@@ -52,7 +53,7 @@
 
   <main class="limitedWidthBlockContainer">
     <div class="limitedWidthBlock">
-      <div class="item">
+      <section class="item">
         <article>
           <div class="item__img">
             <!-- <img src="../images/logo.png" alt="Photographie d'un canapé"> -->
@@ -77,7 +78,7 @@
 
             <div class="item__content__settings">
               <div class="item__content__settings__color">
-                <label for="colors">Choisir une couleur :</label>
+                <label for="color-select">Choisir une couleur :</label>
                 <select name="color-select" id="colors">
                   <option value="">--SVP, choisissez une couleur --</option>
                   <!--                       <option value="vert">vert</option>
@@ -86,18 +87,18 @@
               </div>
 
               <div class="item__content__settings__quantity">
-                <label for="Quantity">Nombre d'article(s) (1-100) :</label>
-                <input type="number" name="itemQuantity" min="1" max="100" value="0" id="Quantity">
+                <label for="itemQuantity">Nombre d'article(s) (1-100) :</label>
+                <input type="number" name="itemQuantity" min="1" max="100" value="0" id="quantity">
               </div>
             </div>
 
             <div class="item__content__addButton">
-              <button id="addToCart"><a href="cart.html"></a>Ajouter au panier</button>
+              <a href="cart.html"><button id="addToCart">Ajouter au panier</button></a>
             </div>
 
           </div>
         </article>
-      </div>
+      </section>
     </div>
   </main>
 
