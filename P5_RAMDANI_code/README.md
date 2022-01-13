@@ -1,6 +1,6 @@
 # Projet 5 : Construisez un site e-commerce en JavaScript// Kanap #
 
-<img src="P5_RAMDANI_MEDHI/P5_RAMDANI_code/front/images/logo.png" alt="My logo"/>
+<img src="../P5_RAMDANI_code/front/images/logo.png" alt="My logo"/>
 
 
 # Architecture générale
