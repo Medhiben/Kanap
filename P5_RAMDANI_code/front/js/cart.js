@@ -289,6 +289,7 @@ function postForm() {
         let inputAddress = document.getElementById('address');
         let inputCity = document.getElementById('city');
         let inputEmail = document.getElementById('email');
+        event.preventDefault();
 
         if (productInLocalStorage.length !== 0 && emailRegExp.test(inputEmail.value) && letterRegExp.test(inputFirstName.value) && letterRegExp.test(inputLastName.value) && addressRegExp.test(inputAddress.value) && letterRegExp.test(inputCity.value)) {
             // buttonCommander.removeAttribute("disabled");
