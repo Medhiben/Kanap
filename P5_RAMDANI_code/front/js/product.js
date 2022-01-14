@@ -9,12 +9,12 @@ const button_sendToCart = document.querySelector("#addToCart");
 
 
 // Récupération des articles de l'API et des données de l'API dans le DOM
-fetch("http://localhost:3000/api/products")
+fetch("http://localhost:3000/api/products/"+id)
     .then((res) => res.json())
-    .then((objetProduits) => {
-        product = objetProduits.find(element => element._id == id);
+    .then((objetProduit) => {
+        product = objetProduit
         getProducts();
-        console.log(product, objetProduits);
+        console.log(objetProduit);
     });
 
 /* fonction affichant l'image,le titre , le
@@ -61,7 +61,6 @@ function addToCart(produit) {
             couleurProduit: choixCouleur,
             quantiteProduit: Number(choixQuantite),
             name: produit.name,
-            price: produit.price,
             description: produit.description,
             imageUrl: produit.imageUrl,
             altTxt: produit.altTxt

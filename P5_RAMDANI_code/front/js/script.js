@@ -33,8 +33,6 @@ function theKanaps(articles) {
         <img src="${article.imageUrl}"alt="${article.altTxt}">
         <h3 class="productName">${article.name}</h3>
         <p class="productDescription">${article.description}</p>
-        <button class="productButton"href="product.html" id="${article._id}">VOIR</button>
-        <p>${article.price} EUROS</p>
     </article>
    </a>`;
     }
