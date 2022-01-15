@@ -7,6 +7,7 @@ if (orderId) {
   const idNode = document.getElementById("orderId");
   idNode.innerText = localStorage.getItem("orderId");
   console.log(localStorage.getItem("orderId"));
+  localStorage.removeItem('products');
   localStorage.removeItem('orderId');
 
 } else {

@@ -351,7 +351,6 @@ function postForm() {
                     console.log(data);
                     if (data.orderId) {
                         console.log(data);
-                        localStorage.clear();
                         JSON.stringify(localStorage.setItem("orderId", data.orderId));
                         document.location.href = "confirmation.html";
                     } else {
