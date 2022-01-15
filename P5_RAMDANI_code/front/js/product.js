@@ -9,7 +9,7 @@ const button_sendToCart = document.querySelector("#addToCart");
 
 
 // Récupération des articles de l'API et des données de l'API dans le DOM
-fetch("http://localhost:3000/api/products/"+id)
+fetch("http://localhost:3000/api/products/" + id)
     .then((res) => res.json())
     .then((objetProduit) => {
         product = objetProduit

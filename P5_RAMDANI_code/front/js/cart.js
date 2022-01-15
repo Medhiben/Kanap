@@ -6,24 +6,17 @@ let emailRegExp = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2
 let letterRegExp = new RegExp("^[a-zA-Z ,.'-]+$");
 let addressRegExp = new RegExp("^[0-9]{1,3}(?:(?:[,. ]){1}[-a-zA-Zàâäéèêëïîôöùûüç]+)+");
 
-/* Si des produits sont présents dans le
-panier, les afficher sur la page du
-panier avec une ligne par produit qui
-reprend les informations du produit
-ainsi que la quantité et le prix.
-Affichage du prix total. Si aucun
-produit dans le panier, affichage d’un
-message indiquant que le panier est vide */
+// Récupération des articles de l'API et des données de l'API dans le DOM
 fetch("http://localhost:3000/api/products")
     .then((res) => res.json())
     .then((data) => {
         if (productInLocalStorage) {
-        for(p of productInLocalStorage){
-           const product = data.find(d => d._id === p.idProduit);
-           if(product){
-            p.price = product.price;
-           }
-        }
+            for (p of productInLocalStorage) {
+                const product = data.find(d => d._id === p.idProduit);
+                if (product) {
+                    p.price = product.price;
+                }
+            }
         }
         getCart();
         productDelete();
@@ -33,6 +26,9 @@ fetch("http://localhost:3000/api/products")
         console.log(data);
     });
 
+    /* Si des produits sont présents dans le panier, les afficher sur la page du panier avec une ligne par produit qui
+reprend les informations du produit ainsi que la quantité et le prix.
+Affichage du prix total. Si aucun produit dans le panier, affichage d’un message indiquant que le panier est vide */
 function getCart() {
     // Si le panier est vide 
     if (!productInLocalStorage) {
@@ -103,10 +99,10 @@ function getCart() {
 
 
             // Insertion de "Qté : "
-            /* let productQte = document.createElement("p");
+             let productQte = document.createElement("p");
              productItemSettingsQuantity.appendChild(productQte);
              console.log(produit)
-             productQte.innerHTML = produit.quantiteProduit; */
+             productQte.innerHTML = "Qté : "; 
 
 
             // Insertion de la quantité
@@ -181,10 +177,10 @@ function productDelete() {
             productInLocalStorage.map(p => delete p.price)
             localStorage.setItem("products", JSON.stringify(productInLocalStorage));
 
-            if(productInLocalStorage.length === 0) {
+            if (productInLocalStorage.length === 0) {
                 localStorage.removeItem('products');
             }
-            
+
 
             alert("Ce produit a bien été supprimé du panier");
             location.reload();
