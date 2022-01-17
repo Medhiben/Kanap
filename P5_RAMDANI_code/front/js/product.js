@@ -1,5 +1,6 @@
 const params = new URLSearchParams(document.location.search);
-const id = params.get("_id");
+const id = params.get("id");
+console.log(params);
 const colorPicked = document.querySelector("#colors");
 const quantityPicked = document.querySelector("#quantity");
 let product = null;

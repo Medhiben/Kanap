@@ -7,13 +7,16 @@ let letterRegExp = new RegExp("^[a-zA-Z ,.'-]+$");
 let addressRegExp = new RegExp("^[0-9]{1,3}(?:(?:[,. ]){1}[-a-zA-Zàâäéèêëïîôöùûüç]+)+");
 
 // Récupération des articles de l'API et des données de l'API dans le DOM
+//
 fetch("http://localhost:3000/api/products")
     .then((res) => res.json())
     .then((data) => {
         if (productInLocalStorage) {
             for (p of productInLocalStorage) {
+                // selection de l'objet back correspondant a l'objet storage
                 const product = data.find(d => d._id === p.idProduit);
                 if (product) {
+                    // on affecte le prix au produit du local storage
                     p.price = product.price;
                 }
             }
@@ -26,7 +29,7 @@ fetch("http://localhost:3000/api/products")
         console.log(data);
     });
 
-    /* Si des produits sont présents dans le panier, les afficher sur la page du panier avec une ligne par produit qui
+/* Si des produits sont présents dans le panier, les afficher sur la page du panier avec une ligne par produit qui
 reprend les informations du produit ainsi que la quantité et le prix.
 Affichage du prix total. Si aucun produit dans le panier, affichage d’un message indiquant que le panier est vide */
 function getCart() {
@@ -99,10 +102,10 @@ function getCart() {
 
 
             // Insertion de "Qté : "
-             let productQte = document.createElement("p");
-             productItemSettingsQuantity.appendChild(productQte);
-             console.log(produit)
-             productQte.innerHTML = "Qté : "; 
+            let productQte = document.createElement("p");
+            productItemSettingsQuantity.appendChild(productQte);
+            console.log(produit)
+            productQte.innerHTML = "Qté : ";
 
 
             // Insertion de la quantité
@@ -174,6 +177,7 @@ function productDelete() {
 
 
             productInLocalStorage = productInLocalStorage.filter(element => element.idProduit !== idDelete || element.couleurProduit !== colorDelete)
+            // suppresion de la propriete price dans chaue objet
             productInLocalStorage.map(p => delete p.price)
             localStorage.setItem("products", JSON.stringify(productInLocalStorage));
 
@@ -204,6 +208,7 @@ function modifyMyQuantity() {
 
                 productInLocalStorage[c].quantiteProduit
                 productInLocalStorage[c].quantiteProduit = quantiteModifValue;
+                // suppresion de la propriete price dans chaue objet
                 productInLocalStorage.map(p => delete p.price)
 
                 localStorage.setItem("products", JSON.stringify(productInLocalStorage));
@@ -351,8 +356,8 @@ function postForm() {
                     console.log(data);
                     if (data.orderId) {
                         console.log(data);
-                        JSON.stringify(localStorage.setItem("orderId", data.orderId));
-                        document.location.href = "confirmation.html";
+                        //JSON.stringify(localStorage.setItem("orderId", data.orderId));
+                        document.location.href = "confirmation.html?orderId="+data.orderId;
                     } else {
                         document.location.href = "confirmation.html";
                     }
